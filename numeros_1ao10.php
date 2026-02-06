@@ -1,9 +1,7 @@
 <?php
 $numeros = [10, 5, 7, 8, 9];
 
-echo '<pre>';
-print_r($numeros);
-echo '</pre>';
+
 
 echo $numeros [2];
 echo '<br>';
@@ -16,4 +14,11 @@ $num = rand(1, 10);
     if (!in_array($num, $numeros)){
         $numeros[] = $num;
     }
+    else {
+        echo '<br>'. 'O número ' . $num . ' já existe no array';
+    }
+
+echo '<pre>';
+print_r($numeros);
+echo '</pre>';
 ?>
