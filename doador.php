@@ -7,17 +7,28 @@
 </head>
 <body>
     
-    <form action="imc.php" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome" placeholder="Ex: Juan">
+    <form action="doador.php" method="POST">
+        <label for="idade">Idade:</label>
+        <input type="text" name="idade" id="idade" placeholder="Ex: 18">
 
         <label for="peso">Peso:</label>
         <input type="number" name="peso" id="peso" placeholder="Ex: 65.9" step="0.10">
 
-        <label for="altura">Altura:</label>
-        <input type="number" name="altura" id="altura" placeholder="Ex: 1,83" step="0.01">
         <button type="submit">Calcular</button>
     </form>
 
+<?php
+
+$idade = $_POST['idade'];
+$peso = $_POST['peso'];
+
+if ($idade > 16 and $idade < 69 and $peso >= 50){
+    echo 'Atende aos requisitos';
+}
+else{
+    echo "Não atende aos requisitos";
+}
+
+?>
 </body>
 </html>

@@ -1,7 +1,7 @@
     <?php
-    $nome = $_GET['nome'];
-    $peso = $_GET['peso'];
-    $altura = $_GET['altura'];
+    $nome = $_POST['nome'];
+    $peso = $_POST['peso'];
+    $altura = $_POST['altura'];
     $imc = $peso / ($altura * $altura);
 
     echo 'Olá ' . $nome . ' seu Imc é de: ' . round($imc, 2) . '</br>';
