@@ -8,7 +8,6 @@
 <body>
     
     <form action="imposto_renda.php" method="Get">
-
     <label for="salario">Salário:</label>
     <input type="number" name="salario" id="salario" placeholder="Ex: 2.000 " step="0.001">
     <button type="submit">Calcular</button>
