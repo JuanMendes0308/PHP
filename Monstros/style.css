@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img{
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+}
+
+#busca{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+form{
+    display: flex;
+    flex-direction: column
+}
+
+main{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px 0px;
+    width: 20vw;
+    height: fit-content;
+    color: black;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+}
