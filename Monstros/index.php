@@ -10,8 +10,7 @@
 
 <body>
     <main>
-        <center>
-        <form action="" method="GET">
+        <form action="index.php" method="GET">
         <div id="busca">
         <select name="monstros" id="monstros" required>
             <option value="" selected disabled>Escolha um monstro</option>

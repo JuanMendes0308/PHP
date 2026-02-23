@@ -33,7 +33,7 @@ form{
 
 main{
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     border: 1px solid black;
     box-shadow: 1px 1px 1px 0px;
