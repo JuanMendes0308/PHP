@@ -1,3 +1,7 @@
+<?php
+require_once ('validador_acesso.php');
+?>
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -17,7 +21,7 @@
   <body>
 
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="home.php">
         <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
@@ -59,7 +63,8 @@
 
                     <div class="row mt-5">
                       <div class="col-6">
-                        <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                        <a href="home.php"class="btn btn-lg btn-warning btn-block">Voltar
+                        </a>
                       </div>
 
                       <div class="col-6">
