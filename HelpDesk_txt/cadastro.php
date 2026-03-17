@@ -29,7 +29,7 @@
         <div class="card-login">
           <div class="card">
             <div class="card-header">
-              Login
+              Cadastre-se
             </div>
             <div class="card-body">
               <form action="valida_login.php" method="GET">
@@ -49,8 +49,6 @@
                 if (isset($_GET['login']) && $_GET['login'] === 'error2') { ?>
                   <div class="text-danger"> Login Obrigatório!</div>
               <?php } ?>
-
-              <a href="cadastro.php">Novo? Cadastre-se</a>
 
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>

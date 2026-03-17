@@ -29,30 +29,28 @@
         <div class="card-login">
           <div class="card">
             <div class="card-header">
-              Login
+              Cadastre-se
             </div>
             <div class="card-body">
-              <form action="valida_login.php" method="GET">
+                <div class="form-group">
+                  <input name="nome" type="text" class="form-control" placeholder="Nome Completo">
+                </div>
+
                 <div class="form-group">
                   <input name="email" type="email" class="form-control" placeholder="E-mail">
                 </div>
                 <div class="form-group">
                   <input name="senha"  type="password" class="form-control" placeholder="Senha">
                 </div>
-
-                <?php
-                if (isset($_GET['login']) && $_GET['login'] === 'erro') { ?>
-                  <div class="text-danger"> Usuário ou senha inválido(s)!</div>
-              <?php } ?>   
-
-              <?php
-                if (isset($_GET['login']) && $_GET['login'] === 'error2') { ?>
-                  <div class="text-danger"> Login Obrigatório!</div>
-              <?php } ?>
-
-              <a href="cadastro.php">Novo? Cadastre-se</a>
-
-                <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+                <div class="form-group">
+                <select name="perfil" class="form-control">
+                    <option style="text-align: center;" selected disabled>-- Selecione --</option>
+                    <option>Usuario</option>
+                    <option>Tecnico</option>
+                    <option>Administrador</option>
+                </select>
+                <br>
+                <button class="btn btn-lg btn-info btn-block" type="submit">Cadastrar</button>
               </form>
             </div>
           </div>

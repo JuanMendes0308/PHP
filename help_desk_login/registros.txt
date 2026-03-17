@@ -1,0 +1,4 @@
+1|adm||ABC|Hardware|AAAAAAAAAAAAAAAAAA
+1|adm|Juan|ABC|Software|LALALA
+1|Adm|Juan|Computador queimou|Hardware|Queimou
+1|Adm|Juan|Computador queimou|Impressora|jhjhkhjhkj
