@@ -32,6 +32,7 @@
               Cadastre-se
             </div>
             <div class="card-body">
+              <form action="valida_cadastro.php" method="GET">
                 <div class="form-group">
                   <input name="nome" type="text" class="form-control" placeholder="Nome Completo">
                 </div>
@@ -49,6 +50,22 @@
                     <option>Tecnico</option>
                     <option>Administrador</option>
                 </select>
+                <?php 
+                    if(isset($_GET['email']) && $_GET['email'] === 'erro') { ?>
+                        <div class="text-danger" style="text-align: center;"> E-Mail já cadastrado!</div>
+                <?php } ?>
+
+                <?php 
+                    if(isset($_GET['validaperfil']) && $_GET['validaperfil'] === 'erro') { ?>
+                        <div class="text-danger" style="text-align: center;"> Obrigatório selecionar um perfil!</div>
+                <?php } ?>
+
+                <?php 
+                    if(isset($_GET['usuario']) && $_GET['usuario'] === 'sucesso') { ?>
+                        <script> alert('Usuário cadastrado com Sucesso!');</script>
+                <?php } else if(isset($_GET['usuario']) && $_GET['usuario'] != 'sucesso') { ?>
+                <script> alert('Erro ao inserir usuário no banco, contate o administador!'); </script> 
+                <?php } ?>
                 <br>
                 <button class="btn btn-lg btn-info btn-block" type="submit">Cadastrar</button>
               </form>
