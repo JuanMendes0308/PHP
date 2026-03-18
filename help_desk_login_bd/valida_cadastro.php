@@ -9,7 +9,7 @@
         exit();
     }   
 
-    if($_POST['perfil'] === "-- Selecione --")
+    if($_GET['perfil'] === "-- Selecione --")
     {
         header('location: cadastro.php?validaperfil=erro');
     } else {
