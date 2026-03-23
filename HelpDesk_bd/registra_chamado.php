@@ -1,22 +1,20 @@
 <?php
-require_once 'validador_acesso.php';
+    require_once "validador_acesso.php";
+    require 'config.php';
 
-$id = str_replace('|', '-', $_SESSION['id']);
-$perfil = str_replace('|', '-', $_SESSION['perfil']);
-$nome = str_replace('|', '-', $_SESSION['nome']);
-$titulo = str_replace('|', '-', $_POST['titulo']);
-$categoria = str_replace('|', '-', $_POST['categoria']);
-$descricao = str_replace('|', '-', $_POST['descricao']);
+    $titulo = $_GET['titulo'];
+    $categoria = $_GET['categoria'];
+    $descricao = $_GET['descricao'];
+    $id_usuario = $_SESSION['id'];
+    $statuschamado = 'Aberto';
 
-$dados = $id . '|' . $perfil . '|' . $nome . '|' . $titulo . '|' . $categoria . '|' . $descricao . PHP_EOL;
+    //Inserção de dados no banco
+    $sql = "INSERT INTO chamados(titulo, categoria, descricao, id_usuario, statuschamado) VALUES('{$titulo}', '{$categoria}', '{$descricao}', '{$id_usuario}', '{$statuschamado}')";
 
-var_dump($dados);
+    $res = $conexao->query($sql);
 
-$arquivo = fopen('../../../help_desk_login/registros.txt', 'a');
-
-fwrite($arquivo, $dados);
-
-fclose($arquivo);
-
-header('location: abrir_chamado.php');
+        if($res==true){
+            //Redirecionando o arquivo e passando os dados para efetivar um aviso com alert em javascript
+            header('location: abrir_chamado.php?cadastro=efetuado');
+        } else { header('location: abrir_chamado.php?cadastro=falha');}
 ?>

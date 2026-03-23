@@ -20,7 +20,7 @@
 
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">
-      <img src="../app_help_desk_bd/imagens/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
       App Help Desk
     </a>
     <ul class="navbar-nav">
@@ -37,7 +37,7 @@
         <div class="card">
           <div class="card-header">
             Cadastre-se:
-            <img src="imagens/user.png" style="margin-left: 175px; width:35px" alt="">
+            <img src="user.png" style="margin-left: 175px; width:35px" alt="">
           </div>
           <div class="card-body">
             <form action="validaCadastro.php" method="GET">
