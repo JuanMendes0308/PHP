@@ -2,21 +2,20 @@
   require_once "validador_acesso.php";
   require "config.php";
 
-// Ajusta a consulta SQL com base no perfil do usuário
 if ($_SESSION['perfil'] != 'Adm') {
     $sql = "SELECT * FROM chamados WHERE id_usuario = {$_SESSION['id']}";
 } else {
     $sql = "SELECT * FROM chamados";
 }
 
-  $res = $conexao->query($sql); // Executa a query de chamados no banco de dados e armazena o resultado em $res (Trazendo os chamados)
+  $res = $conexao->query($sql); 
   
-  $qtd = $res->num_rows; // Armazena a quantidade de linhas (chamados) retornadas pela consulta
+  $qtd = $res->num_rows;
 
   $sql = "SELECT * FROM usuarios";
-  $resusuarios = $conexao->query($sql); // Executa a query que seleciona todos os usuários e armazena em $resusuarios
+  $resusuarios = $conexao->query($sql); 
   
-  $qtdusuarios = $resusuarios->num_rows; // Armazena a quantidade de linhas (usuários) retornadas pela consulta
+  $qtdusuarios = $resusuarios->num_rows; 
 ?>
 
 <html>
@@ -56,13 +55,11 @@ if ($_SESSION['perfil'] != 'Adm') {
             
             <div class="card-body">
               
-            <!-- Rodamos um foreach passando por todos os chamados -->
               <?php while($row = $res->fetch_object()){ ?>
 
               <div class="card mb-3 bg-light">
                 <div class="card-body">
 
-                  <!-- Nos 3 itens abaixo aplicamos os valores respectivos em cada um deles -->
                   <h5 class="card-title"><?php echo $row -> titulo ?></h5>
                   <h6 class="card-subtitle mb-2 text-muted">Categoria: <?php echo $row -> categoria ?></h6>
                   <p class="card-text">Descrição: <?php echo $row -> descricao ?></p>
@@ -70,12 +67,12 @@ if ($_SESSION['perfil'] != 'Adm') {
                     <?php 
                     $idchamado = $row -> id_chamado;
                     $idusuario = $row -> id_usuario;
-                    $resusuarios->data_seek(0); // Reinicia o ponteiro do resultado da consulta de usuários
+                    $resusuarios->data_seek(0); 
                     
                     while ($user = $resusuarios->fetch_object()){
                         if ($user -> id_usuario == $idusuario){ 
                           echo '<p style="color: green; margin-bottom: 2px;"> Usuário: ' . $user -> nome . '</p>';
-                            break; // Sair do loop após encontrar o usuário
+                            break; 
                         }
                       }
                     ?>

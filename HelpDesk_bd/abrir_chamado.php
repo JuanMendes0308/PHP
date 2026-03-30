@@ -56,7 +56,7 @@ require_once "validador_acesso.php";
               <div class="col">
 
 
-                <form action="registra_chamado.php" method="POST">
+                <form action="registra_chamado.php" method="GET">
                   <div class="form-group">
                     <label>Título</label>
                     <input name="titulo" type="text" class="form-control" placeholder="Título" required autofocus>
