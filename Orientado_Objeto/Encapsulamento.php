@@ -1,57 +1,83 @@
 <?php
-class Pessoa{
-    private $idade = '17';
-    protected $sobrenome = 'Mendes ';
-    public $nome = 'Juan';
-
-    public function getIdade(){
-        return $this->idade;
+class Pessoa {
+    private $nome = 'Juan'; 
+    protected $sobrenome = 'Mendes'; 
+    public $humor = 'Feliz';
+	
+	
+	public function getNome()
+    {
+        //somente com métodos que acesso os atributos private e protected
+        return $this->nome;
     }
 
-    public function getSobrenome(){
+    public function getSobrenome()
+    {
+        //somente com métodos que acesso os atributos private e protected
         return $this->sobrenome;
     }
 
-    public function setIdade($value){
-        $this->idade = $value;
-    }
-
-    public function setSobrenome($value){
-        $this->sobrenome = $value;
-    }
-
-    public function __get($atributo)
+    public function setNome($value)
     {
-        return $this->$atributo;
+        $this->nome = $value;
     }
 
-    public function __set($atributo, $valor)
+    public function setSobrenome($value)
     {
-        $this->$atributo = $valor;
-    }
-
-    private function executarMania(){
-        echo "Mexer no cabelo";
-    }
-
-    private function responder(){
-        echo "Olá, tudo bem?";
-    }
-
-    public function executaracao(){
-        $x = rand(1,10);
-        if($x >= 1 && $x <= 8){
-           echo $this->executarMania();
-        } else {
-           echo $this->responder();
+        if (strlen($value) >= 3) {
+            $this->sobrenome = $value;
         }
     }
+
+	public function __get($attr)
+	{
+		return $this->$attr;
+	}
+
+
+	public function __set($attr, $value)
+	{
+		$this->$attr = $value;
+	}
+
+	private function executarMania()
+	{
+		echo 'Assobiar';
+	}
+
+	protected function responder()
+	{
+		echo 'Oi';
+	}
+
+	public function executarAcao()
+	{
+		$x = rand(1, 10);
+
+		if ($x >= 1 && $x <= 5) {
+			$this->responder();
+		} else {
+			$this->executarMania();
+		}
+	}
 }
 
-$pessoa = new Pessoa();
-echo $pessoa->getIdade() . '<br>';
-echo $pessoa->getSobrenome() . '<br>';
-echo $pessoa->nome . '<br>';
-echo "<hr>";
-echo $pessoa->executaracao();
+$presidente = new Pessoa();
+echo $presidente->humor;
+echo '<br />';
+echo $presidente->executarAcao();
+
+echo $presidente->nome; 
+echo $presidente->sobrenome;
+echo $presidente->humor;
+echo '<br />';
+echo $presidente->getNome();
+echo '<br />';
+echo $presidente->getSobrenome();
+echo '<br />';
+$presidente->setNome('Jamilton'); 
+$presidente->setSobrenome('Pereira');
+echo $presidente->getNome();
+echo '<br />';
+echo $presidente->getSobrenome();
 ?>
