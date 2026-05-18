@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MI Personalizados - Loja de Presentes Exclusivos</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="img/LogoMIpersonalizados-removebg-preview.png" alt="Logo MI Personalizados" class="logo">
+                <h1 class="brand-name">MI Personalizados</h1>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#produtos" class="nav-link">Produtos</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#contato" class="nav-link">Contato</a>
+                <button class="auth-btn login-btn" id="loginBtn">Login</button>
+                <button class="auth-btn signup-btn" id="signupBtn">Cadastro</button>
+                <button class="cart-btn" id="cartBtn">🛒 <span id="cartCount">0</span></button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Personalize seus Momentos</h2>
+            <p>Crie lembranças únicas com produtos exclusivos feitos com carinho</p>
+            <button class="cta-btn" onclick="document.getElementById('produtos').scrollIntoView({behavior: 'smooth'})">Explorar Produtos</button>
+        </div>
+    </section>
+
+    <!-- CATEGORIAS PRINCIPAIS -->
+    <section class="categories">
+        <h2 class="section-title">Nossas Categorias</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🎂</div>
+                <h3>Festa</h3>
+                <p>Lembrancinhas e decoração para suas celebrações</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🎁</div>
+                <h3>Presentes</h3>
+                <p>Presentes únicos e personalizados</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👶</div>
+                <h3>Maternidade</h3>
+                <p>Kits especiais para mães festeiras</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUTOS EM DESTAQUE -->
+    <section class="featured-products" id="produtos">
+        <h2 class="section-title">Mais Vendidos</h2>
+        <div class="product-grid" id="productGrid">
+            <!-- Os produtos serão inseridos aqui via JavaScript -->
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about" id="sobre">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Sobre a MI Personalizados</h2>
+                <p>Transformamos ideias em celebrações memoráveis. Somos um ateliê especializado na criação de produtos exclusivos e emocionantes que narram a história de cada cliente de forma singular.</p>
+                <p>Com mais de 8 anos de experiência, consolidamos a marca como sinônimo de afeto e momentos inesquecíveis.</p>
+            </div>
+            <div class="founder-info">
+                <div class="founder-card">
+                    <img src="img/Mídia copiar.png" alt="Michele Costa - Fundadora" class="founder-image">
+                    <h3>Michele Costa</h3>
+                    <p class="position">Fundadora & Criadora</p>
+                    <p>Minha paixão pela papelaria começou em 2016, ao criar os personalizados do aniversário da minha filha. Em 2024, passei a dedicar 100% à marca para oferecer peças únicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DO CARRINHO -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeCart()">&times;</button>
+            <h2>Seu Carrinho</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total">
+                <p>Total: R$ <span id="cartTotal">0.00</span></p>
+                <button class="checkout-btn">Ir para Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE LOGIN -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content auth-modal">
+            <button class="close-btn" onclick="closeLogin()">&times;</button>
+            <h2>Fazer Login</h2>
+            <form class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" placeholder="Sua senha" required>
+                </div>
+                <button type="submit" class="submit-btn">Entrar</button>
+            </form>
+            <p class="auth-switch">Não tem conta? <a href="#" onclick="switchToSignup()">Cadastre-se aqui</a></p>
+        </div>
+    </div>
+
+    <!-- MODAL DE CADASTRO -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content auth-modal">
+            <button class="close-btn" onclick="closeSignup()">&times;</button>
+            <h2>Criar Conta</h2>
+            <form class="auth-form" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">Nome Completo</label>
+                    <input type="text" id="signupName" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Senha</label>
+                    <input type="password" id="signupPassword" placeholder="Crie uma senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirmar Senha</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirme a senha" required>
+                </div>
+                <button type="submit" class="submit-btn">Cadastrar</button>
+            </form>
+            <p class="auth-switch">Já tem conta? <a href="#" onclick="switchToLogin()">Faça login aqui</a></p>
+        </div>
+    </div>
+
+    <!-- CONTATO E SOCIAL -->
+    <section class="contact" id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact-container">
+            <a href="https://wa.me/551300000000" target="_blank" class="social-btn whatsapp">
+                <span>💬</span> WhatsApp
+            </a>
+            <a href="https://instagram.com/mipersonalizados2022" target="_blank" class="social-btn instagram">
+                <span>📸</span> Instagram
+            </a>
+            <a href="mailto:contato@mipersonalizados.com" class="social-btn email">
+                <span>✉️</span> E-mail
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MI Personalizados</h4>
+                <p>Presentes e lembranças exclusivas feitos com carinho.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>📞 (13) 99999-9999</p>
+                <p>📧 contato@mipersonalizados.com</p>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <p>
+                    <a href="#">Instagram</a> | 
+                    <a href="#">WhatsApp</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 MI Personalizados. Todos os direitos reservados.</p>
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
