@@ -1,16 +1,11 @@
 <?php
-/**
- * ===============================================================
+/*
  * CLASSES ADICIONAIS PARA EXPANDIR O SISTEMA
- * ===============================================================
  * 
  * Copie estas classes no seu index.php para adicionar novos tipos
  * de cartas ao sistema!
- * 
- * ===============================================================
  */
 
-// ===== CLASSE ADICIONAL 1: CARTA DE ENERGIA =====
 class CartaEnergia extends Carta {
     private $energiaTipo;
     private $quantidadeEnergia;
@@ -45,7 +40,6 @@ class CartaEnergia extends Carta {
     }
 }
 
-// ===== CLASSE ADICIONAL 2: POKÉMON EVOLUÍDO =====
 class PokemonEvoluido extends Pokemon {
     private $pokemonAnterior;
     private $evolucaoNivel;
@@ -76,7 +70,6 @@ class PokemonEvoluido extends Pokemon {
     }
 }
 
-// ===== CLASSE ADICIONAL 3: ITEM ESPECIAL =====
 class ItemEspecial extends Carta {
     private $efeito;
     private $cooldown; // Turnos até poder usar novamente
@@ -180,7 +173,6 @@ class Deck implements DeckInterface {
     }
 }
 
-// ===== CLASSE ADICIONAL 5: GERENCIADOR DE CARTAS ESTÁTICO =====
 class GerenciadorCartas {
     private static $registroCartas = [];
     private static $contador = 0;

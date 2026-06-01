@@ -27,13 +27,11 @@ abstract class Carta implements CartaInterface {
         self::$totalCartas++;
         self::$cartasRegistradas[] = $this;
         
-        echo "[CONSTRUTOR] Carta '{$nome}' criada! Total: " . self::$totalCartas . "<br>";
+       
     }
     
     // Destruct
-    public function __destruct() {
-        echo "[DESTRUTOR] Carta '{$this->nome}' destruída<br>";
-    }
+    
     
     // Getters (Encapsulamento)
     public function getNome() {
@@ -145,7 +143,6 @@ class CartaTrainer extends Carta {
     }
 }
 
-// ===== BACK-END: CRIANDO INSTÂNCIAS =====
 // Criar alguns Pokémons
 $pikachu = new Pokemon("Pikachu", "ELÉTRICO", 4, 35, 55, 40, 90);
 $charizard = new Pokemon("Charizard", "FOGO", 5, 78, 84, 78, 100);
@@ -196,7 +193,7 @@ if ($selectedIndex !== null && array_key_exists($selectedIndex, $cartas)) {
 <body>
     <header class="header">
         <div class="container">
-            <h1>🎴 Pokémon Trading Card Game</h1>
+            <h1> Pokémon Trading Card Game</h1>
             <p>Programação Orientada a Objetos em PHP</p>
             <div class="stats">
                 <span>Total de Cartas: <?php echo Carta::getTotalCartas(); ?></span>
@@ -207,7 +204,7 @@ if ($selectedIndex !== null && array_key_exists($selectedIndex, $cartas)) {
     <main class="container">
         
         <section class="selected-card">
-            <h2>🎯 Carta Selecionada</h2>
+            <h2> Carta Selecionada</h2>
             <?php if ($selectedCard): ?>
                 <p><strong>Nome:</strong> <?php echo $selectedCard->getNome(); ?></p>
                 <p><strong>Tipo:</strong> <?php echo $selectedCard->getTipo(); ?></p>
@@ -221,7 +218,7 @@ if ($selectedIndex !== null && array_key_exists($selectedIndex, $cartas)) {
         </section>
 
         <section class="cartas-container">
-            <h2>🎴 Cartas Disponíveis</h2>
+            <h2> Cartas Disponíveis</h2>
             <div class="cartas-grid">
                 <?php foreach ($cartasData as $idx => $carta): ?>
                     <a href="?selected=<?php echo $idx; ?>" class="card-link">
@@ -258,6 +255,6 @@ if ($selectedIndex !== null && array_key_exists($selectedIndex, $cartas)) {
     </main>
 
     <footer class="footer">
-        <p>Desenvolvido com 🎴 PHP POO</p>
+        <p>Desenvolvido com PHP POO</p>
     </footer></body>
 </html>

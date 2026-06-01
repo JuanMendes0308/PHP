@@ -197,6 +197,31 @@ body {
     align-items: center;
 }
 
+.carta-image {
+    width: 100%;
+    overflow: hidden;
+    max-height: 90px;
+}
+
+.carta-image img {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    display: block;
+}
+
+.selected-card-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.selected-card-images img {
+    width: 100%;
+    height: 180px;
+}
+
 .carta-header h3 {
     font-size: 1.3em;
     margin: 0;
@@ -379,6 +404,21 @@ body {
 
 .selected-card h2 {
     margin-bottom: 16px;
+}
+
+.selected-card-image {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.selected-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .selected-card p {
