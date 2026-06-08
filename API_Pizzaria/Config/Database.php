@@ -10,13 +10,13 @@ class Database
     //nome ou ip do server
     private $host = 'localhost';
     //porta
-    private $port = '3306';
+    private $port = '3311';
     //banco de dados
     private $db_name = 'api_pizzaria';
     //login
     private $user_name = 'root';
     //senha
-    private $password = '';
+    private $password = 'usbw';
     //representa a conexão
     private $conection;
 

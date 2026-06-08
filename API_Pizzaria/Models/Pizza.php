@@ -59,4 +59,24 @@ public function get(){
         $this->valor = $row['valor'];
 }
 
+public function add(){
+// Query de inserção
+        $query = 'INSERT INTO ' . $this->tabela . ' (nome, ingredientes, valor) '.
+        ' VALUES (:nome, :ingredientes, :valor)';
+ 
+        // Preparar a query
+        $stmt = $this->db->prepare($query);
+ 
+        // Vincular os parâmetros
+        $stmt->bindParam(':nome', $this->nome);
+        $stmt->bindParam(':ingredientes', $this->ingredientes);
+        $stmt->bindParam(':valor', $this->valor);
+ 
+        // Executar a query
+        if ($stmt->execute()) {
+            return true;
+        }        
+        return false;
+
 } 
+}
