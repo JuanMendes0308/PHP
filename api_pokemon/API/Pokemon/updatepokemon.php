@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
  
         // Verificar se os dados não estão vazios e se o ID foi fornecido
         if (
-            !empty($data->id) &&
             !empty($data->numPokedex) &&
             !empty($data->nome) &&
             !empty($data->tipo) &&

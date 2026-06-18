@@ -12,8 +12,8 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../../Config/Database.php';
 include_once '../../Models/Treinador.php';
  
-use API_Pokemon\Config\Database; // Importando a classe Database do namespace API_Pokemon\Config
-use API_Pokemon\Models\Treinador; // Importando a classe Treinador do namespace API_Pokemon\Models
+use API_Pokemon\Config\Database; // Importando a classe Database do namespace Apipizza\Config
+use API_Pokemon\Models\Treinador; // Importando a classe Treinador do namespace Apipizza\Models
  
 // Instanciar o objeto Database e obter a conexão
 $database = new Database();
@@ -34,7 +34,7 @@ try {
         if($treinador->nome != null){
         // Cria o array de resposta
         $treinador_arr = array(
-            "idTreinador" => $treinador->id,
+            "id" => $treinador->id,
             "nome" => $treinador->nome,
             "idade" => $treinador->idade,
             "altura" => $treinador->altura,

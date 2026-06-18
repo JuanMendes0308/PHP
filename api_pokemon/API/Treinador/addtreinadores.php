@@ -2,14 +2,13 @@
 // Headers
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
-header('Access-Control-Allow-Methods: PUT');
-header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+header('Access-Control-Allow-Methods: POST');
  
 include_once '../../Config/Database.php';
 include_once '../../Models/Pokemon.php';
  
 use API_Pokemon\Config\Database;
-use API_Pokemon\Models\Treinador;  
+use API_Pokemon\Models\Treinador;
  
 // Instanciar o banco de dados e conectar
 $database = new Database();
@@ -18,12 +17,12 @@ $db = $database->getConnection();
 // Instanciar o objeto Treinador
 $treinador = new Treinador($db);
  
-if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         // Obter os dados postados
         $data = json_decode(file_get_contents("php://input"));
  
-        // Verificar se os dados não estão vazios e se o ID foi fornecido
+        // Verificar se os dados não estão vazios
         if (
             !empty($data->numPokedex) &&
             !empty($data->nome) &&
@@ -34,10 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
             !empty($data->qtdPokemonCapturado) &&
             !empty($data->qtdPokemonRegistrado)
         ) {
-            // Atribuir o ID para atualização
-            $treinador->id = $data->id; //é o que vem pelo json
- 
-            // Atribuir os demais valores
+            // Atribuir os valores ao objeto Treinadores
             $treinador->nome = $data->nome;
             $treinador->idade = $data->idade;
             $treinador->altura = $data->altura;
@@ -46,32 +42,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
             $treinador->qtdPokemonCapturado = $data->qtdPokemonCapturado;
             $treinador->qtdPokemonRegistrado = $data->qtdPokemonRegistrado;
  
-            // Tentar atualizar o treinador
-            if ($treinador->update()) {
-                http_response_code(200);
-                // Resposta de sucesso    
+            // Criar o treinador
+            if ($treinador->add()) {
+                http_response_code(201);
+                // Resposta de sucesso
                 echo json_encode(
-                    array('Mensagem' => 'Treinador Atualizado com Sucesso')
+                    array('Mensagem' => 'Treinador Criado com Sucesso')
                 );
             } else {
-                http_response_code(500);
+                http_response_code(400);
                 // Resposta de erro
                 echo json_encode(
-                    array('Mensagem' => 'Nao foi possivel atualizar o Treinador')
+                    array('Erro' => 'Nao foi possivel criar o Treinador')
                 );
             }
         } else {
-            // Resposta se dados estiverem incompletos
             http_response_code(400);
+            // Resposta se dados estiverem incompletos
             echo json_encode(
-                array('Mensagem' => 'Dados Incompletos. Nao foi possivel atualizar o Treinador.')
+                array('Erro' => 'Dados Incompletos. Nao foi possivel criar o Treinador.')
             );
         }
-    } catch (Exception $e) {        
-        echo json_encode(array("erro" => $e->getMessage()));
+    } catch (Exception $e) {
+        echo json_encode(array("Erro" => $e->getMessage()));
     }
 } else {
     http_response_code(400);
-    echo json_encode(array("erro" => "Método não suportado!"));
+    echo json_encode(array("Erro" => "Método não suportado!"));
 }
- 

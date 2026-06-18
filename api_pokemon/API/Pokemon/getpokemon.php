@@ -34,21 +34,8 @@ try {
         if($pokemon->nome != null){
         // Cria o array de resposta
         $pokemon_arr = array(
-            "idPokemon" => $pokemon->id,
-            "numPokedex" => $pokemon->numPokedex,
+            "id" => $pokemon->id,
             "nome" => $pokemon->nome,
-            "tipo" => $pokemon->tipo,
-            "peso" => $pokemon->peso,
-            "altura" => $pokemon->altura,
-            "fraqueza" => $pokemon->fraqueza,
-            "vida" => $pokemon->vida,
-            "genero" => $pokemon->genero,
-            "ataque" => $pokemon->ataque,
-            "defesa" => $pokemon->defesa,
-            "ataqueEspecial" => $pokemon->ataqueEspecial,
-            "defesaEspecial" => $pokemon->defesaEspecial,
-            "velocidade" => $pokemon->velocidade,
-            "regiao" => $pokemon->regiao,
             "idTreinador" => $pokemon->idTreinador
         );
         }
