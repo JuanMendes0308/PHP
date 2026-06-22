@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Methods: POST');
  
 include_once '../../Config/Database.php';
-include_once '../../Models/Pokemon.php';
+include_once '../../Models/Treinador.php';
  
 use API_Pokemon\Config\Database;
 use API_Pokemon\Models\Treinador;
@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
         // Verificar se os dados não estão vazios
         if (
-            !empty($data->numPokedex) &&
             !empty($data->nome) &&
             !empty($data->idade) &&
             !empty($data->altura) &&

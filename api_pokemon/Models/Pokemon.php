@@ -45,8 +45,8 @@ public function get(){
  // Cria a consulta
         $query = 'SELECT
                 p.idPokemon,
-                p.nome,
                 p.numPokedex,
+                p.nome,
                 p.tipo,
                 p.peso,
                 p.altura,
@@ -78,8 +78,9 @@ public function get(){
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
  
         // Define as propriedades
-        $this->nome = $row['nome'];
+        if($row){
         $this->numPokedex = $row['numPokedex'];
+        $this->nome = $row['nome'];
         $this->tipo = $row['tipo'];
         $this->peso = $row['peso'];
         $this->altura = $row['altura'];
@@ -93,6 +94,9 @@ public function get(){
         $this->velocidade = $row['velocidade'];
         $this->regiao = $row['regiao'];
         $this->idTreinador = $row['idTreinador'];
+}{
+        $this->nome = null;
+    }
 }
 
 public function add(){

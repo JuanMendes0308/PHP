@@ -35,10 +35,23 @@ try {
         // Cria o array de resposta
         $pokemon_arr = array(
             "id" => $pokemon->id,
+            "numPokedex" => $pokemon->numPokedex,
             "nome" => $pokemon->nome,
+            "tipo" => $pokemon->tipo,
+            "peso" => $pokemon->peso,
+            "altura" => $pokemon->altura,
+            "fraqueza" => $pokemon->fraqueza,
+            "vida" => $pokemon->vida,
+            "genero" => $pokemon->genero,
+            "ataque" => $pokemon->ataque,
+            "defesa" => $pokemon->defesa,
+            "ataqueEspecial" => $pokemon->ataqueEspecial,
+            "defesaEspecial" => $pokemon->defesaEspecial,
+            "velocidade" => $pokemon->velocidade,
+            "regiao" => $pokemon->regiao,
             "idTreinador" => $pokemon->idTreinador
         );
-        }
+        http_response_code(200);
  
         // Converte para JSON e envia a resposta
         // `JSON_PRETTY_PRINT` é opcional, mas deixa o JSON mais legível
@@ -49,14 +62,21 @@ try {
             array("Mensagem" => "Pokemon não encontrado.")
         );
     }
+    }else {
+ 
+            http_response_code(400); // BAD REQUEST : ERRO
+            echo json_encode(
+                array("Mensagem" => "ID não informado.")
+            );
+        }
 } else {
     http_response_code(405);
     echo json_encode(
         array("Mensagem" => "Método não permitido.")
     );
-}
+}}
  
-} catch (PDOException $e) {
+ catch (PDOException $e) {
  
     http_response_code(500);
     echo json_encode(

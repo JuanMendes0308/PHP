@@ -43,7 +43,6 @@ try {
             "qtdPokemonCapturado" => $treinador->qtdPokemonCapturado,
             "qtdPokemonRegistrado" => $treinador->qtdPokemonRegistrado
         );
-        }
  
         // Converte para JSON e envia a resposta
         // `JSON_PRETTY_PRINT` é opcional, mas deixa o JSON mais legível
@@ -54,6 +53,13 @@ try {
             array("Mensagem" => "Treinador não encontrado.")
         );
     }
+    }else {
+ 
+            http_response_code(400); // BAD REQUEST : ERRO
+            echo json_encode(
+                array("Mensagem" => "ID não informado.")
+            );
+        }
 } else {
     http_response_code(405);
     echo json_encode(
@@ -61,7 +67,7 @@ try {
     );
 }
  
-} catch (PDOException $e) {
+}catch (PDOException $e) {
  
     http_response_code(500);
     echo json_encode(

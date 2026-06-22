@@ -62,6 +62,7 @@ public function get(){
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
  
         // Define as propriedades
+        if($row){
         $this->nome = $row['nome'];
         $this->idade = $row['idade'];
         $this->altura = $row['altura'];
@@ -69,8 +70,11 @@ public function get(){
         $this->qtdInsignias = $row['qtdInsignias'];
         $this->qtdPokemonCapturado = $row['qtdPokemonCapturado'];
         $this->qtdPokemonRegistrado = $row['qtdPokemonRegistrado'];
+}{
+        $this->nome = null;
+    }
 }
-               
+              
 public function add(){
 // Query de inserção
         $query = 'INSERT INTO ' . $this->tabela . ' (nome, idade, altura, peso, qtdInsignias, qtdPokemonCapturado, qtdPokemonRegistrado) '.
